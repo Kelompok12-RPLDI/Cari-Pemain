@@ -42,3 +42,10 @@ Route::get('/register', function () {
         'register'
     ]);
 });
+
+Route::get('/dashboard', function () {
+    return view('dashboard/dashboardPelatih', [
+        'title' => 'Dashboard',
+        'dashboard'
+    ]);
+});

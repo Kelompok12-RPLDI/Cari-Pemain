@@ -36,7 +36,7 @@
                 <input type="password" name="password" class="form-control" id="password" placeholder="Password">
                 <label for="password">Password</label>
             </div>
-            <button class="w-100 btn btn-lg btn-success mt-3" type="submit">Register</button>
+            <button class="w-100 btn btn-lg btn-success mt-3" type="submit" href = "/dashboard">Register</button>
         </form>
         </main>
     </div>
