@@ -36,12 +36,8 @@ Route::get('/login', function () {
     ]);
 });
 
-Route::get('/register', function () {
-    return view('register/register', [
-        'title' => 'Register',
-        'register'
-    ]);
-});
+Route::get('/register', [RegisterController::class,'index'])->middleware('guest');
+Route::post('/register',[RegisterController::class,'store']);
 
 Route::get('/dashboard', function () {
     return view('dashboard/dashboardPelatih', [
