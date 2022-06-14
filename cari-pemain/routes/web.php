@@ -1,8 +1,14 @@
 <?php
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\loginController;
-use App\Http\Controllers\registerController;
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\InputNilaiController;
+use App\Http\Controllers\InputJadwalController;
+use App\Http\Controllers\LihatNilaiController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -15,37 +21,23 @@ use App\Http\Controllers\registerController;
 |
 */
 
+Auth::routes();
 
-Route::get('/', function () {
-    return view('home', ['title' => 'Home']);
-});
+Route::get('/', [HomeController::class, 'index'])->name('home');
 
-Route::get('/about', function () {
-    return view('about', ['title' => 'About']);
-});
+Route::middleware('auth')->group(function () {
+    
+    Route::get('users', [UserController::class, 'index'])->name('users.index');
+    
+    Route::get('profile', [ProfileController::class, 'show'])->name('profile.show');
+    Route::put('profile', [ProfileController::class, 'update'])->name('profile.update');
 
-Route::get('/contact', function () {
-    return view('contact', ['title' => 'Contact']);
-});
+    Route::get('lihatnilai', [LihatNilaiController::class, 'index'])->name('lihatnilai.index');
+    Route::get('lihatjadwal', [LihatJadwalController::class, 'index'])->name('lihatjadwal.index');
+    
+    
+    
+    Route::resource('nilaipemain', InputNilaiController::class);
+    Route::resource('jadwalpemain', InputJadwalController::class);
 
-Route::get('/login', function () {
-    return view('login/login', [
-        'title' => 'Login',
-        loginController::class,
-        'login'
-    ]);
-});
-
-Route::get('/register', function () {
-    return view('register/register', [
-        'title' => 'Register',
-        'register'
-    ]);
-});
-
-Route::get('/dashboard', function () {
-    return view('dashboard/dashboardPelatih', [
-        'title' => 'Dashboard',
-        'dashboard'
-    ]);
 });
