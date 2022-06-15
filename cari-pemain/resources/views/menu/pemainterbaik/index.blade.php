@@ -8,34 +8,30 @@
 <div class="container-fluid">
 
     <!-- Page Heading -->
-    <h1 class="h3 mb-2 text-gray-800 font-weight-bold">Jadwal Pemain</h1>
+    <h1 class="h3 mb-2 text-gray-800 font-weight-bold">Nilai Pemain</h1>
 
     <!-- DataTales Example -->
     <div class="card shadow mb-4">
         <div class="card-header py-3">
-            <a href="{{ route('jadwalpemain.create') }}" class="btn btn-primary m-0 font-weight-bold">Input Jadwal</a>
+            <a href="{{ route('pemainterbaik.create') }}" class="btn btn-primary m-0 font-weight-bold">Input Nilai</a>
         </div>
         <div class="card-body">
             <div class="table-responsive">
                 <table class="table table-borderless table-striped table-hover" id="dataTable" width="100%" cellspacing="0">
                     <thead class="bg-primary text-white">
                         <tr>
-                            <th>Id Jadwal</th>
-                            <th>Tempat</th>
-                            <th>Tanggal</th>
-                            <th>Kegiatan</th>
+                            <th>Id Pemain</th>
+                            <th>Nama Pemain</th>
+                            <th>Posisi Pemain</th>
                             <th>Action</th>
                         </tr>
                     </thead>
                     <tbody class="text-dark">
-                        @foreach ($jadwal_pemain as $j)
+                        @foreach ($pemainterbaik as $n)
                         <tr>
-                            <td>{{ $j->id }}</td>
-                            <td>{{ $j->tempat }}</td>
-                            <td>{{ $j->tanggal}}</td>
-                            <td>{{ $j->kegiatan}}</td>
-
-                            
+                            <td>{{ $n->id }}</td>
+                            <td>{{ $n->nama_pemain }}</td>
+                            <td>{{ $n->posisi_pemain}}</td>
                                 
                             <td>
                                 <div class="dropdown no-arrow">
@@ -43,12 +39,12 @@
                                         <i class="fas fa-ellipsis-v"></i>
                                     </a>
                                     <div class="dropdown-menu shadow animated--fade-in" aria-labelledby="dropdownMenuButton">
-                                        <a class="dropdown-item" href="{{ route('jadwalpemain.edit', $j->id) }}">
+                                        <a class="dropdown-item" href="{{ route('pemainterbaik.edit', $n->id) }}">
                                             <i class="fas fa-edit fa-sm fa-fw mr-2 text-gray-600"></i>
                                             Edit
                                         </a>
 
-                                        <form action="{{ route('jadwalpemain.destroy', $j->id) }}" method="post">
+                                        <form action="{{ route('pemainterbaik.destroy', $n->id) }}" method="post">
                                             @csrf
                                             @method('delete')
 

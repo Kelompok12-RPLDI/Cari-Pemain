@@ -23,13 +23,13 @@
                             <th>Id Jadwal</th>
                             <th>Tempat</th>
                             <th>Tanggal</th>
-                            <th>Kegiatann</th>
+                            <th>Kegiatan</th>
                         </tr>
                     </thead>
                     <tbody class="text-dark">
-                    @foreach ($jadwal_pemain as $j)
+                        @foreach ($Jadwalpemain as $j)
                         <tr>
-                            <td>{{ $j->id_jadwal }}</td>
+                            <td>{{ $j->id }}</td>
                             <td>{{ $j->tempat }}</td>
                             <td>{{ $j->tanggal}}</td>
                             <td>{{ $j->kegiatan}}</td>

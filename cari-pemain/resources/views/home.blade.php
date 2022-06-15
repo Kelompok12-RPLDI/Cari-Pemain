@@ -43,8 +43,8 @@
                     </a>
                     <div class="row no-gutters align-items-center">
                         <div class="col mr-2">
-                            <div class="text-normal font-weight-bold text-success text-uppercase mb-1">Total Pemain</div>
-                            <div class="h5 mb-0 font-weight-bold text-gray-800">{{ $total_users }}</div>
+                            <div class="text-normal font-weight-bold text-success text-uppercase mb-1">Total Pelatih</div>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800">{{ $total_users_admin }}</div>
                         </div>
                         <div class="col-auto">
                             <i class="fas fa-users fa-2x text-success"></i>
@@ -59,10 +59,13 @@
         <div class="board-item col-xl-3 col-md-6 mb-4">
             <div class="card border-left-primary border-bottom-primary shadow h-100 py-2">
                 <div class="card-body">
+                    <a href="{{ route('users.index') }}">
+                        <span class="link"></span>
+                    </a>
                     <div class="row no-gutters align-items-center">
                         <div class="col mr-2">
                             <div class="text-normal font-weight-bold text-primary text-uppercase mb-1">Total Pemain</div>
-                            <div class="h5 mb-0 font-weight-bold text-gray-800">{{ $total_users }}</div>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800">{{ $total_users_pemain }}</div>
                         </div>
                         <div class="col-auto">  
                             <i class="fas fa-user-shield fa-2x text-primary"></i>
@@ -85,28 +88,72 @@
                 </div>
                 <!-- Card Body -->
                 <div class="card-body">
-            <div class="table-responsive">
-                <table class="table table-borderless table-striped table-hover" id="dataTable" width="100%" cellspacing="0">
-                    <thead class="bg-primary text-white">
-                        <tr>
-                            <th>Id Pemain</th>
-                            <th>Nama Pemain</th>
-                            <th>Posisi Pemain</th>
-                        </tr>
-                    </thead>
-                    <tbody class="text-dark">
-                        @foreach ($nilai_pemain as $n)
-                            <tr>
-                                <td>{{ $n->id }}</td>
-                                <td>{{ $n->name }}</td>
-                                <td>{{ $n->position }}</td>
-                            </tr>
-                        @endforeach
+                <div class="table-responsive">
+                    {{-- <div class="card-header py-3">
+                    <a href="{{ route('events.create') }}" class="btn btn-primary m-0 font-weight-bold">Add Events</a>
+                </div> --}}
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table table-borderless table-striped table-hover" id="dataTable" width="100%" cellspacing="0">
+                            <thead class="bg-primary text-white">
+                                <tr>
+                                    <th>Id Pemain</th>
+                                    <th>Nama Pemain</th>
+                                    <th>Posisi Pemain</th>
+                                </tr>
+                            </thead>
+                            <tbody class="text-dark">
+                                @foreach ($nilai_pemain as $n)
+                                <tr>
+                                    
+                                    <td>{{ $n->id_pemain }}</td>
+                                    <td>{{ $n->nama_pemain }}</td>
+                                    <td>{{ $n->posisi_pemain}}</td>
+                                </tr>
+                                @endforeach
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
             
-                    </tbody>
-                </table>
+            <div class="card shadow mb-4">
+                <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                    <h6 class="m-0 font-weight-bold text-primary">Pemain terbaik</h6>
+                </div>
+                <div class="table-responsive">
+                {{-- <div class="card-header py-3">
+                    <a href="{{ route('events.create') }}" class="btn btn-primary m-0 font-weight-bold">Add Events</a>
+                </div> --}}
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table table-borderless table-striped table-hover" id="dataTable" width="100%" cellspacing="0">
+                            <thead class="bg-primary text-white">
+                                <tr>
+                                    <th>Id Pemain</th>
+                                    <th>Nama Pemain</th>
+                                    <th>Posisi Pemain</th>
+                                </tr>
+                            </thead>
+                            <tbody class="text-dark">
+                                @foreach ($pemainterbaik as $n)
+                                <tr>
+                                    <td>{{ $n->id }}</td>
+                                    <td>{{ $n->nama_pemain }}</td>
+                                    <td>{{ $n->posisi_pemain}}</td>
+                                </tr>
+                                @endforeach
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            
+
             </div>
         </div>
+
+        
             </div>
         </div>
     </div>

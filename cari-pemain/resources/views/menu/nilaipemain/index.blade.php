@@ -39,8 +39,7 @@
                             <td>{{ $n->kecepatan}}</td>
                             <td>{{ $n->stamina}}</td>
                             <td>{{ $n->power}}</td>
-                            <td>{{ $n->feedback}} 
-                            </td>
+                            <td>{{ $n->feedback}}</td>
                                 
                             <td>
                                 <div class="dropdown no-arrow">

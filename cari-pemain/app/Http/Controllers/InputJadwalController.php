@@ -17,8 +17,6 @@ class InputJadwalController extends Controller
         $jadwal_pemain = Jadwalpemain::paginate();
         return view('menu.jadwalpemain.index', compact('jadwal_pemain'));
 
-        
-
     }
 
     /**

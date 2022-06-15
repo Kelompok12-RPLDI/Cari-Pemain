@@ -7,8 +7,9 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\InputNilaiController;
 use App\Http\Controllers\InputJadwalController;
+use App\Http\Controllers\InputPemainTerbaikController;
 use App\Http\Controllers\LihatNilaiController;
-
+use App\Http\Controllers\LihatJadwalController;
 
 /*
 |--------------------------------------------------------------------------
@@ -24,6 +25,7 @@ use App\Http\Controllers\LihatNilaiController;
 Auth::routes();
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
+    // MessageCreated::dispatch();
 
 Route::middleware('auth')->group(function () {
     
@@ -39,5 +41,6 @@ Route::middleware('auth')->group(function () {
     
     Route::resource('nilaipemain', InputNilaiController::class);
     Route::resource('jadwalpemain', InputJadwalController::class);
+    Route::resource('pemainterbaik', InputPemainTerbaikController::class);
 
 });

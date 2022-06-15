@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use App\Models\Nilaipemain;
+use App\Models\Pemainterbaik;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -25,9 +26,11 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $total_users = User::all()->count();
+        $total_users_admin = User::where('role', 'admin')->count();
+        $total_users_pemain = User::where('role', 'user')->count();
         $nilai_pemain = Nilaipemain::paginate();
+        $pemainterbaik = Pemainterbaik::paginate();
 
-        return view('home', compact('total_users', 'nilai_pemain'));
+        return view('home', compact('total_users_admin','total_users_pemain', 'nilai_pemain', 'pemainterbaik'));
     }
 }

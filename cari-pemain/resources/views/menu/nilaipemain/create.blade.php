@@ -24,22 +24,6 @@
 
                         <div class="card-body col-lg-8">
 
-                            <div class="input-group mb-3">
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text">User</span>
-                                </div>
-                                <select class="form-control @error('user_id') is-invalid @enderror" name="user_id" placeholder="{{ __('User ID') }}" onfocus='this.size=6;' onblur='this.size=1;' onchange='this.size=1; this.blur();' required>
-                                    <option value="user">--Select User--</option>
-                                    @foreach ($userOption as $user)
-                                        <option value="{{ $user->id_pemain }}">{{  $user->nama_pemain }}</option>
-                                    @endforeach
-                                </select>
-                            </div>
-                            @error('user_id')
-                            <div class="form-group custom-control">
-                                <label class="">{{ $message }}</label>
-                            </div>
-                            @enderror
 
 
                             <div class="input-group mb-3">

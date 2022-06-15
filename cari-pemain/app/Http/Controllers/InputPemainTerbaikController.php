@@ -1,10 +1,10 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Models\Nilaipemain;
+use App\Models\Pemainterbaik;
 use Illuminate\Http\Request;
 
-class InputNilaiController extends Controller
+class InputPemainTerbaikController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -13,8 +13,8 @@ class InputNilaiController extends Controller
      */
     public function index()
     {
-        $nilai_pemain = Nilaipemain::paginate();
-        return view('menu.nilaipemain.index', compact('nilai_pemain'));
+        $pemainterbaik = Pemainterbaik::paginate();
+        return view('menu.pemainterbaik.index', compact('pemainterbaik'));
     }
 
     /**
@@ -24,9 +24,7 @@ class InputNilaiController extends Controller
      */
     public function create()
     {
-        
-        $userOption = Nilaipemain::orderBy('id_pemain')->get();
-        return view('menu.nilaipemain.create', compact('userOption'));
+        return view('menu.pemainterbaik.create');
     }
 
     /**
@@ -37,16 +35,15 @@ class InputNilaiController extends Controller
      */
     public function store(Request $r)
     {
-        $nilaipemain = Nilaipemain::create([
+        $pemainterbaik = Pemainterbaik::create([
+            'id' => $r->id,
             'nama_pemain' => $r->nama,
             'posisi_pemain' => $r->posisi,
-            'kecepatan' => $r->kecepatan,
-            'stamina' => $r->stamina,
-            'power' => $r->power,
-            'feedback' => $r->feedback,
+
+            
         ]);
 
-        return redirect()->route('nilaipemain.index');
+        return redirect()->route('pemainterbaik.index');
     }
 
     /**
@@ -68,9 +65,8 @@ class InputNilaiController extends Controller
      */
     public function edit($id)
     {
-        $nilaipemain = Nilaipemain::where('id_pemain', $id)->get();
-        dd($nilaipemain);
-        return view('menu.nilaipemain.edit', compact('nilaipemain'));
+        $pemainterbaik = Pemainterbaik::find($id);
+        return view('menu.pemainterbaik.edit', compact('pemainterbaik'));
     }
 
     /**
@@ -82,18 +78,13 @@ class InputNilaiController extends Controller
      */
     public function update(Request $r, $id)
     {
-        $x = Nilaipemain::find($id);
-        dd($x);
-        $nilaipemain = Nilaipemain::where('id_pemain', $id)->update([
+        $pemainterbaik = JadPemainterbaik::where('id', $id)->update([
+            'id' => $r->id,
             'nama_pemain' => $r->nama,
             'posisi_pemain' => $r->posisi,
-            'kecepatan' => $r->kecepatan,
-            'stamina' => $r->stamina,
-            'power' => $r->power,
-            'feedback' => $r->feedback,
         ]);
 
-        return redirect()->route('nilaipemain.index');
+        return redirect()->route('pemainterbaik.index');
     }
 
     /**
@@ -104,10 +95,10 @@ class InputNilaiController extends Controller
      */
     public function destroy($id)
     {
-        $nilaipemain = Nilaipemain::where('id_pemain', $id);
-        
-        $nilaipemain->delete();
+        $pemainterbaik = Pemainterbaik::find($id);
 
-        return redirect()->route('nilaipemain.index');
+        $pemainterbaik->delete();
+
+        return redirect()->route('pemainterbaik.index');
     }
 }

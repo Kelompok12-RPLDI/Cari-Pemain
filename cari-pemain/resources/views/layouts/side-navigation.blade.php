@@ -54,6 +54,15 @@
             <span>{{ __('Input Jadwal Pemain') }}</span></a>
     </li>
     @endcan
+
+    @can('isAdmin')
+    <!-- Nav Item - Orders -->
+    <li class="nav-item @if(request()->routeIs('pemainterbaik.*')) active @endif">
+        <a class="nav-link" href="{{ route('pemainterbaik.index') }}">
+            <i class="fas fa-keyboard"></i>    
+            <span>{{ __('Input Pemain Terbaik') }}</span></a>
+    </li>
+    @endcan
     
 
 
@@ -76,6 +85,9 @@
             <span>{{ __('Jadwal Pemain') }}</span></a>
     </li>
     @endcan
+
+
+    
 
 
 
